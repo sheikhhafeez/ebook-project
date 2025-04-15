@@ -1,48 +1,63 @@
-<?php
-session_start();
-include "../assets/includes/db.php" ;
+<?php 
+include "../assets/includes/db.php"; 
+session_start(); 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+    $email = trim($_POST["email"]); 
+    $password = $_POST["password"]; 
 
-    // Check if email exists
-    $stmt = $conn->prepare("SELECT user_id, role, password_hash FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+    // Fetch user data by email
+    $stmt = $conn->prepare("SELECT id, password, role_id FROM users WHERE email = ?"); 
+    $stmt->bind_param("s", $email); 
+    $stmt->execute(); 
+    $stmt->store_result(); 
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($user_id, $role, $password_hash);
-        $stmt->fetch();
+    if ($stmt->num_rows > 0) { 
+        // Bind result
+        $stmt->bind_result($id, $hashed_password, $role_id); 
+        $stmt->fetch(); 
 
-        // Now verify the entered password with hashed password from DB
-        if (password_verify($password, $password_hash)) {
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['user_role'] = $role;
-            header("location: index.php");
-            exit();
-
-            // Redirect based on role
-            switch ($role) {
-                case 'admin':
-                    header("Location: ../AdminDashboard/veiw_ebooks.php");
-                    break;
-                case 'author':
-                    header("Location: ../author/author_dashboard.php");
-                    break;
-                case 'reader':
-                    header("Location: ../CustomerDashboard/veiw_ebooks.php");
-                    break;
-                default:
-                    echo "Unknown role!";
+        // Check password
+        if ($role_id == 1) {
+            if (md5($password) == $hashed_password) {
+                // Password is correct
+                $_SESSION['user_id'] = $id; 
+                $_SESSION['user_role'] = $role_id; 
+                header("Location: ../admin-auth/index.php"); 
+                exit(); 
+            } else {
+                echo "<script>alert('Invalid credentials!'); window.history.back();</script>"; 
+                exit(); 
             }
-            exit();
         } else {
-            echo "<script>alert('Invalid credentials!'); window.history.back();</script>";
+            if (password_verify($password, $hashed_password)) {
+                // Password is correct
+                $_SESSION['user_id'] = $id; 
+                $_SESSION['user_role'] = $role_id; 
+
+                // Redirect based on role_id
+                switch ($role_id) { 
+                    case 2: 
+                        header("Location: ../author-auth/index.php"); 
+                        break; 
+                    case 3: 
+                        header("Location: ../website/view.php"); 
+                        break; 
+                    default: 
+                        echo "<script>alert('Unknown role!'); window.history.back();</script>"; 
+                        exit(); 
+                } 
+                exit(); 
+            } else {
+                echo "<script>alert('Invalid credentials!'); window.history.back();</script>"; 
+                exit(); 
+            }
         }
-    } else {
-        echo "<script>alert('Invalid credentials!'); window.history.back();</script>";
-    }
+    } else { 
+        echo "<script>alert('Invalid credentials!'); window.history.back();</script>"; 
+        exit(); 
+    } 
+    $stmt->close(); 
+    $conn->close();
 }
 ?>
