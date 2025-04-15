@@ -4,8 +4,8 @@ include "../assets/includes/db.php" ;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $title = $_POST['title'];
-    $author_id = $_POST['author_id'];
-    $category_id = $_POST['category_id'];
+    // $author_id = $_POST['author_id'];
+    // $category_id = $_POST['category_id'];
     $description = $_POST['description'];
     $language = $_POST['language'];
     $isbn = $_POST['isbn'];
@@ -39,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
    
-    $sql = "INSERT INTO ebooks (title, author_id, category_id, description, language, isbn, cover_image, file_path, price, is_free, published_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO ebooks (title, description, language, isbn, cover_image, file_path, price, is_free, published_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("siisssssdis", $title, $author_id, $category_id, $description, $language, $isbn, $cover_image, $file, $price, $is_free, $published_at);
+    $stmt->bind_param("ssssssdis", $title, $description, $language, $isbn, $cover_image, $file, $price, $is_free, $published_at);
 
     if ($stmt->execute()) {
         echo "<script>alert('eBook added successfully!'); window.location.href='admin-edit-ebook.php';</script>";

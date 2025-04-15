@@ -247,7 +247,7 @@
                       <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($ebook['title']) ?>">
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Author ID</label>
                       <input type="text" name="author_id" class="form-control" value="<?= htmlspecialchars($ebook['author_id']) ?>">
                     </div>
@@ -255,7 +255,7 @@
                     <div class="form-group">
                       <label>Category ID</label>
                       <input type="text" name="category_id" class="form-control" value="<?= htmlspecialchars($ebook['category_id']) ?>">
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                       <label>Description</label>

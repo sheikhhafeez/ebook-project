@@ -4,8 +4,8 @@ include "../assets/includes/db.php" ;
 
 $id = $_POST['ebook_id'];
 $title = $_POST['title'];
-$author_id = $_POST['author_id'];
-$category_id = $_POST['category_id'];
+// $author_id = $_POST['author_id'];
+// $category_id = $_POST['category_id'];
 $description = $_POST['description'];
 $language = $_POST['language'];
 $isbn = $_POST['isbn'];
@@ -37,8 +37,8 @@ if (!empty($file)) {
 
 $query = "UPDATE ebooks SET 
     title='$title',
-    author_id='$author_id',
-    category_id='$category_id',
+    -- author_id='$author_id',
+    -- category_id='$category_id',
     description='$description',
     language='$language',
     isbn='$isbn',
