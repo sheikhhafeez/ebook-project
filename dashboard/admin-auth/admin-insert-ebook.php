@@ -1,8 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "ebooks");
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include "assets/includes/db.php" ;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
