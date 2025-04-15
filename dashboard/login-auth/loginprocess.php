@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "assets/includes/db.php" ;
+include "../assets/includes/db.php" ;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $password_hash)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_role'] = $role;
-            header("location:index.php");
+            header("location: index.php");
             exit();
 
             // Redirect based on role

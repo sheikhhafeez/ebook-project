@@ -1,6 +1,6 @@
 <?php
 
-include "assets/includes/db.php" ;
+include "../assets/includes/db.php" ;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = trim($_POST["full_name"]);

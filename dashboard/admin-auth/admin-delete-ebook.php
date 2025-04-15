@@ -1,6 +1,6 @@
 <?php
 
-include "assets/includes/db.php" ;
+include "../assets/includes/db.php" ;
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

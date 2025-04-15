@@ -1,6 +1,6 @@
 <?php
 
-include "assets/includes/db.php" ;
+include "../assets/includes/db.php" ;
 
 $id = $_POST['ebook_id'];
 $title = $_POST['title'];
