@@ -212,7 +212,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index.php">
               <span class="menu-title">Dashboard</span>
               <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -261,7 +261,10 @@
                     </thead>
                     <tbody>
                       <?php
-                      include "assets/includes/db.php" ;
+                      $conn = new mysqli("localhost", "root", "", "ebooks");
+                      if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                      }
 
                       $sql = "SELECT * FROM ebooks";
                       $result = $conn->query($sql);

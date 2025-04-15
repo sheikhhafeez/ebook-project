@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $password_hash)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_role'] = $role;
+            header("location:index.php");
+            exit();
 
             // Redirect based on role
             switch ($role) {
