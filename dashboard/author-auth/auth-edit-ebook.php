@@ -193,13 +193,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin-create-ebook.php">
+                    <a class="nav-link" href="auth-create-ebook.php">
                         <span class="menu-title">Create Books</span>
                         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin-edit-ebook.php">
+                    <a class="nav-link" href="auth-view.php">
                         <span class="menu-title">Edit Books</span>
                         <i class="mdi mdi-contacts menu-icon"></i>
                     </a>
