@@ -192,18 +192,6 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admin-create-ebook.php" >
-                <span class="menu-title">Create Books</span>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admin-edit-ebook.php">
-                <span class="menu-title">Edit Books</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
           </ul>
         </nav>
         <!-- partial -->
@@ -262,7 +250,7 @@
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Recent Tickets</h4>
+                    <h4 class="card-title">All Books</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
