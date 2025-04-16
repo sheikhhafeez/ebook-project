@@ -252,63 +252,67 @@
                   <div class="card-body">
                     <h4 class="card-title">All Books</h4>
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
+                    <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Book</th>
+                        <th>Images</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $author_id = "1" ;
+                      $sql = "SELECT * FROM ebooks where author_id = " . $author_id ;
+                      $result = $conn->query($sql);
+
+                      if ($result->num_rows > 0):
+                        while ($row = $result->fetch_assoc()):
+                      ?>
                           <tr>
-                            <th> Assignee </th>
-                            <th> Subject </th>
-                            <th> Status </th>
-                            <th> Last Update </th>
-                            <th> Tracking ID </th>
+                            <td><?= htmlspecialchars($row['title']) ?></td>
+                            <td><?= htmlspecialchars($row['price']) ?></td>
+                            <td>
+                              <?php if (!empty($row['file_path'])): ?>
+                                <!-- Displaying the book name instead of 'Download eBook' -->
+                                <a href="../uploads/files/<?= htmlspecialchars($row['file_path']) ?>" class="btn btn-info btn-sm" download>
+                                  <?= basename($row['file_path']) ?> <!-- This will display the file name -->
+                                </a>
+                              <?php else: ?>
+                                <span>No File Available</span>
+                              <?php endif; ?>
+                            </td>
+
+
+                            <td>
+                              <?php if (!empty($row['cover_image'])): ?>
+                                <img src="../uploads/images/<?= htmlspecialchars($row['cover_image']) ?>" alt="Cover Image" style="width: 100px; height: 120px; border-radius: 0;">
+                              <?php else: ?>
+                                <img src="https://via.placeholder.com/100x150?text=No+Image" alt="No Image" style="width: 100px; height: 150px; border-radius: 0;">
+                              <?php endif; ?>
+                            </td>
+
+
+                            <td>
+                              <span>
+                                <a href="edit-book-form.php?id=<?= $row['ebook_id'] ?>" class="btn btn-gradient-info btn-fw">Edit</a>
+                                <a href="admin-delete-ebook.php?id=<?= $row['ebook_id'] ?>" class="btn btn-gradient-danger btn-fw" onclick="return confirm('Are you sure you want to delete this eBook?');">Delete</a>
+                              </span>
+                            </td>
                           </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <img src="../assets/images/faces/face1.jpg" class="me-2" alt="image"> David Grey
-                            </td>
-                            <td> Fund is not recieved </td>
-                            <td>
-                              <label class="badge badge-gradient-success">DONE</label>
-                            </td>
-                            <td> Dec 5, 2017 </td>
-                            <td> WD-12345 </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="../assets/images/faces/face2.jpg" class="me-2" alt="image"> Stella Johnson
-                            </td>
-                            <td> High loading time </td>
-                            <td>
-                              <label class="badge badge-gradient-warning">PROGRESS</label>
-                            </td>
-                            <td> Dec 12, 2017 </td>
-                            <td> WD-12346 </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="../assets/images/faces/face3.jpg" class="me-2" alt="image"> Marina Michel
-                            </td>
-                            <td> Website down for one week </td>
-                            <td>
-                              <label class="badge badge-gradient-info">ON HOLD</label>
-                            </td>
-                            <td> Dec 16, 2017 </td>
-                            <td> WD-12347 </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="../assets/images/faces/face4.jpg" class="me-2" alt="image"> John Doe
-                            </td>
-                            <td> Loosing control on server </td>
-                            <td>
-                              <label class="badge badge-gradient-danger">REJECTED</label>
-                            </td>
-                            <td> Dec 3, 2017 </td>
-                            <td> WD-12348 </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <?php
+                        endwhile;
+                      else:
+                        echo "<p class='text-center'>No eBooks found.</p>";
+                      endif;
+
+                      $conn->close();
+                      ?>
+                    </tbody>
+                  </table>
                     </div>
                   </div>
                 </div>
