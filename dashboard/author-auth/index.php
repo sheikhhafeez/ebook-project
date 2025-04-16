@@ -192,6 +192,18 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="auth-create-ebook.php">
+                <span class="menu-title">Create Books</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="auth-view.php">
+                <span class="menu-title">View Books</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- partial -->

@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($role_id == 1) {
             if (md5($password) == $hashed_password) {
-              
                 $_SESSION['user_id'] = $id; 
                 $_SESSION['user_role'] = $role_id; 
                 header("Location: ../admin-auth/index.php"); 

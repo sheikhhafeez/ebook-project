@@ -25,12 +25,12 @@
                 <div class="form-group">
                   <input type="password" name="confirm_password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Enter Your Confirm Password">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="role">Select Role</label>
                   <div class="input-container">
                     <input type="checkbox" name="role" value="author"> Author
                   </div>
-                </div>
+                </div> -->
                 <div class="mb-4">
                   <div class="form-check">
                     <label class="form-check-label text-muted">

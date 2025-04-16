@@ -2,11 +2,11 @@
 include "../assets/includes/db.php"; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $full_name = ($_POST["full_name"]);
+    $author_name = ($_POST["author_name"]);
     $email = ($_POST["email"]);
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $role = 3; 
+    $role = 2; 
 
     if ($password !== $confirm_password) {
         echo "<script>alert('Passwords do not match!'); window.history.back();</script>";
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssi", $email, $hashed_password, $role);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Registration successful!'); window.location.href ='login.php';</script>";
+        echo "<script>alert('Registration successful!'); window.location.href ='../author-auth/index.php';</script>";
     } else {
         echo "<script>alert('Error occurred: " . $conn->error . "'); window.history.back();</script>";
     }

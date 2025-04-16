@@ -54,7 +54,7 @@
               <a class="dropdown-item" href="#">
                 <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="../login-auth/logout.php">
                 <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
             </div>
           </li>
@@ -269,8 +269,8 @@
 
                             <td>
                               <span>
-                                <a href="edit-book-form.php?id=<?= $row['ebook_id'] ?>" class="btn btn-gradient-info btn-fw">Edit</a>
-                                <a href="admin-delete-ebook.php?id=<?= $row['ebook_id'] ?>" class="btn btn-gradient-danger btn-fw" onclick="return confirm('Are you sure you want to delete this eBook?');">Delete</a>
+                                <a href="auth-edit-ebook.php?id=<?= $row['ebook_id'] ?>" class="btn btn-gradient-info btn-fw">Edit</a>
+                                <a href="auth-delete-ebook.php?id=<?= $row['ebook_id'] ?>" class="btn btn-gradient-danger btn-fw" onclick="return confirm('Are you sure you want to delete this eBook?');">Delete</a>
                               </span>
                             </td>
                           </tr>

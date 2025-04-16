@@ -54,7 +54,7 @@
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="../login-auth/logout.php">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
@@ -223,7 +223,7 @@
                     <div class="card">
                       <div class="card-body">
                         <h4 class="card-title">Add a New eBook to the Library</h4>
-                        <form class="forms-sample" action="admin-insert-ebook.php" method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action="auth-insert-ebook.php" method="POST" enctype="multipart/form-data">
                           <div class="form-group">
                             <label for="exampleInputName1">Name</label>
                             <input type="text" name="title" class="form-control" id="exampleInputName1" placeholder="Name">

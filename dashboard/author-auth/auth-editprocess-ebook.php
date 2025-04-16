@@ -4,8 +4,6 @@ include "../assets/includes/db.php" ;
 
 $id = $_POST['ebook_id'];
 $title = $_POST['title'];
-// $author_id = $_POST['author_id'];
-// $category_id = $_POST['category_id'];
 $description = $_POST['description'];
 $language = $_POST['language'];
 $isbn = $_POST['isbn'];
@@ -37,8 +35,6 @@ if (!empty($file)) {
 
 $query = "UPDATE ebooks SET 
     title='$title',
-    -- author_id='$author_id',
-    -- category_id='$category_id',
     description='$description',
     language='$language',
     isbn='$isbn',
@@ -50,7 +46,7 @@ $query = "UPDATE ebooks SET
     WHERE ebook_id = $id";
 
 if (mysqli_query($conn, $query)) {
-    echo "<script>alert('eBook updated successfully!'); window.location.href='admin-edit-ebook.php';</script>";
+    echo "<script>alert('eBook updated successfully!'); window.location.href='auth-view.php';</script>";
 } else {
     echo "Error: " . mysqli_error($conn);
 }

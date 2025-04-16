@@ -1,5 +1,5 @@
 <?php
-include "../assets/includes/db.php" ;
+include "../assets/includes/db.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $language = $_POST['language'];
     $isbn = $_POST['isbn'];
-    $price = $_POST['price'] ?? 0; 
+    $price = $_POST['price'] ?? 0;
     $is_free = $_POST['is_free'] ?? 0;
     $published_at = $_POST['published_at'] ?? date("Y-m-d");
 
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Failed to upload eBook file.");
     }
 
-   
+
     $sql = "INSERT INTO ebooks (title, description, language, isbn, cover_image, file_path, price, is_free, published_at) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssssssdis", $title, $description, $language, $isbn, $cover_image, $file, $price, $is_free, $published_at);
 
     if ($stmt->execute()) {
-        echo "<script>alert('eBook added successfully!'); window.location.href='admin-edit-ebook.php';</script>";
+        echo "<script>alert('eBook added successfully!'); window.location.href='auth-view.php';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -54,5 +54,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 }
-?>
-
