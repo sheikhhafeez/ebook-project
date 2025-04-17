@@ -33,27 +33,22 @@
                 <label for="title">Name</label>
                 <input type="text" name="title" class="form-control" id="title" placeholder="Enter book title">
               </div>
-
               <div class="form-group">
                 <label for="description">Description</label>
                 <input type="text" name="description" class="form-control" id="description" placeholder="Enter book description">
               </div>
-
               <div class="form-group">
                 <label for="language">Language</label>
                 <input type="text" name="language" class="form-control" id="language" placeholder="Language">
               </div>
-
               <div class="form-group">
                 <label for="isbn">ISBN</label>
                 <input type="text" name="isbn" class="form-control" id="isbn" placeholder="ISBN number">
               </div>
-
               <div class="form-group">
                 <label for="price">Price</label>
                 <input type="text" name="price" class="form-control" id="price" placeholder="Enter price">
               </div>
-
               <div class="form-group">
                 <label for="is_free">Is Free</label>
                 <select name="is_free" class="form-control" id="is_free">
@@ -61,12 +56,10 @@
                   <option value="0">No</option>
                 </select>
               </div>
-
               <div class="form-group">
                 <label for="published_at">Published Date</label>
                 <input type="date" name="published_at" class="form-control" id="published_at">
               </div>
-
               <div class="form-group">
                 <label>Cover Image</label>
                 <input type="file" name="cover_image" class="file-upload-default" id="coverImageInput" style="display: none;">
@@ -77,7 +70,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
                 <label>File Upload</label>
                 <input type="file" name="file_path" class="file-upload-default" id="filePathInput" style="display: none;">

@@ -1,25 +1,22 @@
 <?php
 include "../../assets/includes/db.php";
 
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $stmt = $conn->prepare("SELECT * FROM categories WHERE id = ?");
-  $stmt->bind_param("i", $id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $row = $result->fetch_assoc();
+if (isset($_GET['category_id'])) {
+  $category_id = $_GET['category_id'];
+  $query = "SELECT * FROM categories WHERE category_id = '$category_id'";
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_assoc($result);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $category_id = $_POST['category_id'];
+  $id = $_POST['category_id'];
   $category_name = $_POST['category_name'];
-  $stmt = $conn->prepare("UPDATE categories SET category_name = ? WHERE id = ?");
-  $stmt->bind_param("si", $name, $id);
-  if ($stmt->execute() === TRUE) {
-    echo "Category updated successfully!";
-    header("Location: view-category.php"); // redirect back to categories page
+  $query = "UPDATE categories SET category_name='$category_name' WHERE category_id = '$id'";
+  if (mysqli_query($conn, $query)) {
+    echo "<script>alert('Category updated successfully!'); window.location.href='view-category.php';</script>";
   } else {
-    echo "Error: " . $conn->error;
+    echo "Error: " . mysqli_error($conn);
   }
 }
 ?>
+

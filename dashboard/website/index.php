@@ -34,6 +34,21 @@
 
 
 </head>
+<style>
+	.book-look-image {
+		border-left: 20px solid #3c3c3c;
+		box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+		width: 100%;
+		display: block;
+		transform: perspective(800px) rotateY(-5deg);
+		transition: box-shadow 0.3s ease, transform 0.3s ease;
+	}
+
+	.book-look-image:hover {
+		box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.4);
+		transform: perspective(800px) rotateY(0deg);
+	}
+</style>
 
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
 
@@ -143,7 +158,7 @@
 		</header>
 
 	</div><!--header-wrap-->
-  
+
 	<!-- carousel start -->
 	<section id="billboard">
 		<div class="container">
@@ -183,7 +198,7 @@
 
 									<!-- Image Right -->
 									<div class="col-md-4 text-center">
-										<img src="../assets/uploads/images/<?php echo $row['image']; ?>" alt="banner" class="img-fluid banner-image">
+										<img src="../assets/uploads/images/<?php echo $row['image']; ?>" alt="banner" class="img-fluid banner-image book-look-image">
 									</div>
 								</div>
 							</div>
@@ -198,7 +213,7 @@
 			</div>
 		</div>
 	</section>
-    <!-- carousel end -->
+	<!-- carousel end -->
 
 	<!-- featured-books start -->
 	<section id="featured-books" class="py-5 my-5">
@@ -295,7 +310,7 @@
 			</div>
 		</div>
 	</section>
-    <!-- featured-books end -->
+	<!-- featured-books end -->
 
 
 
