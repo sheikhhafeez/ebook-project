@@ -1,4 +1,11 @@
-<?php include "../assets/includes/header.php"; ?>
+<?php
+session_start();
+
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 2) {
+  header("location: ../login-auth/login.php");
+  exit;
+}
+ include "../assets/includes/header.php"; ?>
 
     <div class="container-scroller">
       <!-- <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -201,6 +208,12 @@
             <li class="nav-item">
               <a class="nav-link" href="auth-view.php">
                 <span class="menu-title">View Books</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="auth-profile.php">
+                <span class="menu-title">Profile</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>

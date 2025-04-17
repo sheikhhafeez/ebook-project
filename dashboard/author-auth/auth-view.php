@@ -1,4 +1,13 @@
-<?php include "../assets/includes/header.php"; ?>
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 2) {
+  header("location: ../login-auth/login.php");
+  exit;
+}
+
+include "../assets/includes/header.php"; ?>
 
   <div class="container-scroller">
     <!-- <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -249,8 +258,9 @@
                             <td>
                               <?php if (!empty($row['file_path'])): ?>
                                 <!-- Displaying the book name instead of 'Download eBook' -->
-                                <a href="../uploads/files/<?= htmlspecialchars($row['file_path']) ?>" class="btn btn-info btn-sm" download>
-                                  <?= basename($row['file_path']) ?> <!-- This will display the file name -->
+                                <a href="../uploads/files/<?= htmlspecialchars($row['file_path']) ?>" class="btn btn-gradient-dark btn-fw" download>
+                                  <!-- <?= basename($row['file_path']) ?> This will display the file name -->
+                                   Download Book
                                 </a>
                               <?php else: ?>
                                 <span>No File Available</span>

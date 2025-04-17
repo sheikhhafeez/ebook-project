@@ -33,11 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_role'] = $role_id; 
 
                 switch ($role_id) { 
+                    case 1: 
+                        header("Location: ../admin-auth/index.php"); 
+                        break; 
                     case 2: 
                         header("Location: ../author-auth/index.php"); 
                         break; 
                     case 3: 
-                        header("Location: ../website/view.php"); 
+                        header("Location: .../website/view.php"); 
                         break; 
                     default: 
                         echo "<script>alert('Unknown role!'); window.history.back();</script>"; 

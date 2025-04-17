@@ -1,4 +1,12 @@
-<?php include "../assets/includes/header.php"; ?>
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 1) {
+  header("location: ../login-auth/login.php");
+  exit;
+}
+include "../assets/includes/header.php"; ?>
 
     <div class="container-scroller">
       <!-- <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -193,15 +201,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin-create-ebook.php" >
-                <span class="menu-title">Create Books</span>
+              <a class="nav-link" href="auth-register.php" >
+                <span class="menu-title">Create Author</span>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admin-edit-ebook.php">
-                <span class="menu-title">Edit Books</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">

@@ -1,5 +1,9 @@
 <?php
 include "../assets/includes/db.php";
+session_start();
+$authorsql = "SELECT author_id FROM authors where user_id = " . $_SESSION['user_id'] ;
+$author_id = $conn->query($authorsql);
+$author = mysqli_num_rows($author_id);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -39,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    $sql = "INSERT INTO ebooks (title, description, language, isbn, cover_image, file_path, price, is_free, published_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO ebooks (title, author_id, description, language, isbn, cover_image, file_path, price, is_free, published_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssdis", $title, $description, $language, $isbn, $cover_image, $file, $price, $is_free, $published_at);
+    $stmt->bind_param("sisssssdis", $title, $author, $description, $language, $isbn, $cover_image, $file, $price, $is_free, $published_at);
 
     if ($stmt->execute()) {
         echo "<script>alert('eBook added successfully!'); window.location.href='auth-view.php';</script>";

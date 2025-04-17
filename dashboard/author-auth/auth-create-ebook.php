@@ -1,4 +1,12 @@
-<?php include "../assets/includes/header.php"; ?>
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 2) {
+  header("location: ../login-auth/login.php");
+  exit;
+}
+include "../assets/includes/header.php"; ?>
 
     <div class="container-scroller">
       <!-- <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -289,7 +297,7 @@
                       </div>
                     </div>
                   </div>
-                <div class="col-lg-12 grid-margin stretch-card">
+                <!-- <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                       <div class="card-body">
                         <h4 class="card-title">Add Books</h4>
@@ -400,7 +408,7 @@
                         </table>
                       </div>
                     </div>
-                  </div>
+                </div> -->
             </div>
           </div>
           <!-- content-wrapper ends -->
