@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2025 at 11:01 AM
+-- Generation Time: Apr 17, 2025 at 02:04 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,13 @@ CREATE TABLE `authors` (
   `profile_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `authors`
+--
+
+INSERT INTO `authors` (`author_id`, `user_id`, `author_name`, `bio`, `profile_image`) VALUES
+(1, 3, 'lanyrupoj', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -49,16 +56,6 @@ CREATE TABLE `banners` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `banners`
---
-
-INSERT INTO `banners` (`id`, `title`, `description`, `image`, `created_at`) VALUES
-(1, 'The Hollow Bell', 'A haunting mystery that resonates in silence', 'the-hollow-bell.jpg', '2025-04-17 08:02:12'),
-(2, 'Herman Melville Moby Dick', 'A tale of the sea, obsession, and the great white whale', 'moby-dick.jpg', '2025-04-17 08:02:44'),
-(3, '101 Steps to Success Nimi Tuntematon', 'Climb the ladder to success, one step at a time.', '101success.jpg', '2025-04-17 08:09:08'),
-(4, ' The Five Great Philosophies of Life ', 'Five philosophies, one journey to meaning..', 'the-five-great-philosophies-of-life.jpg', '2025-04-17 08:10:56');
-
 -- --------------------------------------------------------
 
 --
@@ -67,19 +64,8 @@ INSERT INTO `banners` (`id`, `title`, `description`, `image`, `created_at`) VALU
 
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL
+  `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`category_id`, `category_name`, `description`) VALUES
-(1, 'Adventure', NULL),
-(2, 'Business', NULL),
-(3, 'Horror', NULL),
-(4, 'Nature', NULL);
 
 -- --------------------------------------------------------
 
@@ -214,7 +200,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `role_id`, `created_at`) VALUES
-(1, 'superadmin@example.com', 'd1e576b71ccef5978d221fadf4f0e289', 1, '2025-04-17 08:01:30');
+(1, 'superadmin@example.com', 'd1e576b71ccef5978d221fadf4f0e289', 1, '2025-04-17 11:31:31'),
+(2, 'author@gmail.com', '$2y$10$ETtCTjULQa5ax62UtBOzEe3Pxvd/K6XCXp3VETgarCMjjb5vEOoja', 2, '2025-04-17 11:33:16'),
+(3, 'lanyrupoj@mailinator.com', '$2y$10$bVjYSOFHz/Sto7qy7Mab3OfeK7kl33fX3YK85Ka2LPIb5m.y22Vn6', 2, '2025-04-17 11:54:25');
 
 -- --------------------------------------------------------
 
@@ -266,9 +254,7 @@ ALTER TABLE `competitions`
 --
 ALTER TABLE `ebooks`
   ADD PRIMARY KEY (`ebook_id`),
-  ADD UNIQUE KEY `isbn` (`isbn`),
-  ADD KEY `author_id` (`author_id`),
-  ADD KEY `category_id` (`category_id`);
+  ADD UNIQUE KEY `isbn` (`isbn`);
 
 --
 -- Indexes for table `orders`
@@ -331,19 +317,19 @@ ALTER TABLE `winners`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `competitions`
@@ -391,7 +377,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `winners`
@@ -408,13 +394,6 @@ ALTER TABLE `winners`
 --
 ALTER TABLE `authors`
   ADD CONSTRAINT `authors_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `ebooks`
---
-ALTER TABLE `ebooks`
-  ADD CONSTRAINT `ebooks_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`),
-  ADD CONSTRAINT `ebooks_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
 
 --
 -- Constraints for table `orders`
