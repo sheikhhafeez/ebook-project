@@ -269,9 +269,10 @@ include "../assets/includes/header.php"; ?>
 
 
                             <td>
-                              <?php if (!empty($row['cover_image'])): ?>
-                                <img src="../uploads/images/<?= htmlspecialchars($row['cover_image']) ?>" alt="Cover Image" style="width: 100px; height: 120px; border-radius: 0;">
-                              <?php else: ?>
+                            <?php if (!empty($row['cover_image'])): ?>
+                            <img src="../assets/uploads/images/<?= htmlspecialchars($row['cover_image']) ?>" class="card-img-top" alt="Cover Image">
+                            <?php else: ?>
+                              
                                 <img src="https://via.placeholder.com/100x150?text=No+Image" alt="No Image" style="width: 100px; height: 150px; border-radius: 0;">
                               <?php endif; ?>
                             </td>

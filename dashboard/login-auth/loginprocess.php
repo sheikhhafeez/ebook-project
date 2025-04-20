@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         header("Location: ../author-auth/index.php"); 
                         break; 
                     case 3: 
-                        header("Location: .../website/view.php"); 
+                        header("Location: ../website/index.php"); 
                         break; 
                     default: 
                         echo "<script>alert('Unknown role!'); window.history.back();</script>"; 

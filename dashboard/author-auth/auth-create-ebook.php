@@ -236,14 +236,14 @@ include "../assets/includes/header.php"; ?>
                             <label for="exampleInputName1">Name</label>
                             <input type="text" name="title" class="form-control" id="exampleInputName1" placeholder="Name">
                           </div>
-                          <!-- <div class="form-group">
+                          <div class="form-group">
                             <label for="exampleInputName1">Author ID</label>
                             <input type="text" name="author_id" class="form-control" id="exampleInputName1" placeholder="Name">
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName1">Category ID</label>
                             <input type="text" name="category_id" class="form-control" id="exampleInputName1" placeholder="Name">
-                          </div> -->
+                          </div>
                           <div class="form-group">
                             <label for="exampleInputName1">Description</label>
                             <input type="text" name="description" class="form-control" id="exampleInputName1" placeholder="Name">

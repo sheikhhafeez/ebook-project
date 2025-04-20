@@ -1,9 +1,11 @@
 <?php
 
-include "../assets/includes/db.php" ;
+include "../assets/includes/db.php";
 
 $id = $_POST['ebook_id'];
 $title = $_POST['title'];
+$author_id = $_POST['author_id'];
+$category_id = $_POST['category_id'];
 $description = $_POST['description'];
 $language = $_POST['language'];
 $isbn = $_POST['isbn'];
@@ -34,6 +36,8 @@ if (!empty($file)) {
 }
 
 $query = "UPDATE ebooks SET 
+    author_id='$author_id',
+    category_id='$category_id',
     title='$title',
     description='$description',
     language='$language',
